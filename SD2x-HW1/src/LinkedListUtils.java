@@ -11,7 +11,11 @@ import java.util.LinkedList;
  */
 
 public class LinkedListUtils {
-	
+	/*
+	 * Assumes the input LinkedList is already sorted in non-descending order 
+	 * Inserts the input int value into the correct location of the list.  
+	 * If the input LinkedList is null, this method should simply terminate.
+	 */
 	public static void insertSorted(LinkedList<Integer> list, int value) {
 		if (list != null) {
 			if (list.isEmpty()) {
@@ -31,7 +35,12 @@ public class LinkedListUtils {
 		}
 	}
 	
-
+	/*
+	 * 	Removes all instances of the N largest values in the LinkedList. 
+	 *  If the input LinkedList is null or if N is non-positive, this method should simply return without any modifications to the input LinkedList. 
+	 *  If any of the N largest values appear more than once in the LinkedList, this method should return remove all instances, so it may remove more than N elements overall. 
+	 *  The other elements in the LinkedList should not be modified and their order must not be changed.
+	 */
 	public static void removeMaximumValues(LinkedList<String> list, int N) {
 		if (list != null && !list.isEmpty()) {
 			if (list.size() <= N) {
@@ -46,6 +55,10 @@ public class LinkedListUtils {
 		}
 	}
 	
+	/*
+	 * Returns true if the second LinkedList is a subsequence of the first, and false if it is not. 
+	 * The method should return false if either input is null or empty.
+	 */
 	public static boolean containsSubsequence(LinkedList<Integer> one, LinkedList<Integer> two) {
 		if (one == null || two == null || one.isEmpty() || two.isEmpty()) {
 			return false;
