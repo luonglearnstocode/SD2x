@@ -102,14 +102,19 @@ public class Analyzer {
 					map.put(word.text, word.calculateScore());
 				}
 			}
-		}
+		}		
 		
 		return map; 
-
 	}
 	
 	/*
-	 * Implement this method in Part 4
+	 * Use the Map to calculate and return the average score of all the words in the input sentence.
+	 * If a word in the sentence does not start with a letter, ignore it.
+	 * If it starts with a letter and is not present in the Map, assign it a score of 0.
+	 * 
+	 * If the input Map is null or empty, 
+	 * or if the input sentence is null or empty or does not contain any valid words, 
+	 * this method should return 0.
 	 */
 	public static double calculateSentenceScore(Map<String, Double> wordScores, String sentence) {
 
@@ -124,26 +129,10 @@ public class Analyzer {
 	 * You may modify it as needed.
 	 */
 	public static void main(String[] args) {
-//		if (args.length == 0) {
-//			System.out.println("Please specify the name of the input file");
-//			System.exit(0);
-//		}
-//		String filename = args[0];
-//		System.out.print("Please enter a sentence: ");
-//		Scanner in = new Scanner(System.in);
-//		String sentence = in.nextLine();
-//		in.close();
-//		List<Sentence> sentences = Analyzer.readFile(filename);
-//		Set<Word> words = Analyzer.allWords(sentences);
-//		Map<String, Double> wordScores = Analyzer.calculateScores(words);
-//		double score = Analyzer.calculateSentenceScore(wordScores, sentence);
-//		System.out.println("The sentiment score is " + score);
-		
 		/*
 		 * Test readFile
 		 */
-		String filename = "reviews.txt";
-		List<Sentence> sentences = Analyzer.readFile(filename);
+//		List<Sentence> sentences = Analyzer.readFile(filename);
 //		for (Sentence sentence : sentences) {
 //			System.out.println(sentence.getScore() + " " + sentence.getText());
 //		}
@@ -152,10 +141,32 @@ public class Analyzer {
 		/*
 		 * Test allWords
 		 */
-		Set<Word> words = Analyzer.allWords(sentences);
-		for (Word word : words) {
-			System.out.println(word.getText() + " " + word.getCount());
-		}
+//		Set<Word> words = Analyzer.allWords(sentences);
+//		for (Word word : words) {
+//			System.out.println(word.getText() + " " + word.getCount());
+//		}
 		
+		
+//		if (args.length == 0) {
+//			System.out.println("Please specify the name of the input file");
+//			System.exit(0);
+//		}
+//		String filename = args[0];
+		
+		/*
+		 * Test entire program
+		 */
+		System.out.print("Please enter a sentence: ");
+		Scanner in = new Scanner(System.in);
+		String sentence = in.nextLine();
+		in.close();
+		
+		String filename = "reviews.txt";
+		List<Sentence> sentences = Analyzer.readFile(filename);
+		Set<Word> words = Analyzer.allWords(sentences);
+		Map<String, Double> wordScores = Analyzer.calculateScores(words);
+		double score = Analyzer.calculateSentenceScore(wordScores, sentence);
+		System.out.println("The sentiment score is " + score);
+			
 	}
 }
