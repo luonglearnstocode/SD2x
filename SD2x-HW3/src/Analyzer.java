@@ -117,11 +117,23 @@ public class Analyzer {
 	 * this method should return 0.
 	 */
 	public static double calculateSentenceScore(Map<String, Double> wordScores, String sentence) {
-
-		/* IMPLEMENT THIS METHOD! */
+		double score = 0;
+		int count = 0;
 		
-		return 0; // this line is here only so this code will compile if you don't modify it
-
+		if (!(wordScores == null || wordScores.isEmpty() 
+				|| sentence == null || sentence.isEmpty())) {
+			String[] tokens = sentence.toLowerCase().split(" ");
+			for (String token : tokens) {
+				if (Character.isLetter(token.charAt(0))) { // token starts with a letter
+					if (wordScores.containsKey(token)) {
+						score += wordScores.get(token);
+					}
+					count++;
+				}
+			}
+		}
+		
+		return count == 0 ? 0 : score / count; 
 	}
 	
 	/*
