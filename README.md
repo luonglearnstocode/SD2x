@@ -4,3 +4,5 @@ https://www.edx.org/course/data-structures-software-design-pennx-sd2x
 Implement three methods that perform functions on a linked list, using the java.util.LinkedList class from the Java Collections API.
 * [Homework 2 - Queues and Stacks](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/44fa2fc239fa479baabfb7cbac8bcfb6/c246839fafee4770975035fd1c2bed51/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40c246839fafee4770975035fd1c2bed51)
 Use the stack and queue implementations from the Java Collections API in order to build a program that determines whether an HTML page is well formatted.
+* [Homework 3 - Collections](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/44fa2fc239fa479baabfb7cbac8bcfb6/486c0e96406d4cd898628ed07612cb67/?child=first)
+Write a program that will analyze the sentiment (positive or negative) of a sentence based on the words it contains by implementing methods that use the List, Set, and Map interfaces from the Java Collections API.
