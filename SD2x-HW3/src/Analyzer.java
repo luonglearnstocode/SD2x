@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -52,14 +53,38 @@ public class Analyzer {
 	}
 	
 	/*
-	 * Implement this method in Part 2
+	 * This method should find all of the individual tokens/words in the text field of each Sentence in the List and create Word objects for each distinct word. 
+	 * The Word objects should keep track of the number of occurrences of that word in all Sentences, and the total cumulative score of all Sentences in which it appears. 
+	 * Return a Set of those Word objects.
+	 * 
+	 * If the input List of Sentences is null or is empty, the allWords method should return an empty Set.
+	 * If a Sentence object in the input List is null, this method should ignore it and process the non-null Sentences.
+	 * Ignores any token that does not start with a letter and convert all strings to lowercase. 
 	 */
 	public static Set<Word> allWords(List<Sentence> sentences) {
-
-		/* IMPLEMENT THIS METHOD! */
+		List<Word> wordList = new ArrayList<>();
 		
-		return null; // this line is here only so this code will compile if you don't modify it
-
+		if (!(sentences == null || sentences.isEmpty())) { // sentences list not null or empty
+			for (Sentence sentence : sentences) {
+				if (sentence != null) {
+					String[] tokens = sentence.getText().toLowerCase().split(" ");
+					for (String token : tokens) {
+						if (Character.isLetter(token.charAt(0))) { // token starts with a letter
+							Word word = new Word(token);
+							word.increaseTotal(sentence.getScore());
+							
+							if (wordList.contains(word)) {
+								wordList.get(wordList.indexOf(word)).increaseTotal(word.getTotal()); // update word 
+							} else {
+								wordList.add(word);
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return new HashSet<Word>(wordList);
 	}
 	
 	/*
@@ -104,10 +129,23 @@ public class Analyzer {
 //		double score = Analyzer.calculateSentenceScore(wordScores, sentence);
 //		System.out.println("The sentiment score is " + score);
 		
+		/*
+		 * Test readFile
+		 */
 		String filename = "reviews.txt";
 		List<Sentence> sentences = Analyzer.readFile(filename);
-		for (Sentence sentence : sentences) {
-			System.out.println(sentence.getScore() + " " + sentence.getText());
+//		for (Sentence sentence : sentences) {
+//			System.out.println(sentence.getScore() + " " + sentence.getText());
+//		}
+		
+		
+		/*
+		 * Test allWords
+		 */
+		Set<Word> words = Analyzer.allWords(sentences);
+		for (Word word : words) {
+			System.out.println(word.getText() + " " + word.getCount());
 		}
+		
 	}
 }
