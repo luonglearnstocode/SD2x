@@ -199,27 +199,26 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		if (n.leftChild == null && n.rightChild == null) { // leaf node
 			return 0;
 		}
-		
-		return 1 + (height(n.leftChild) > height(n.rightChild) ? height(n.leftChild) : height(n.rightChild));
+		return 1 + Math.max(height(n.leftChild), height(n.rightChild));
 	}
 
 
-	// Method #4.
+	/*
+	 * Method #4.
+	 * Given a Node, return true if the absolute value of the difference in heights of 
+	 * its left and right children is 0 or 1, and return false otherwise. 
+	 * 
+	 * If the Node is null or does not exist in this BST, this method should return false.
+	 */
 	protected boolean isBalanced(Node n) {
-
-		/* IMPLEMENT THIS METHOD! */
+		if (n == null || !contains(n.value)) return false; 
 		
-		return true; // this line is here only so this code will compile if you don't modify it
-
+		return Math.abs(height(n.leftChild) - height(n.rightChild)) < 2;
 	}
 	
 	// Method #5. .
 	public boolean isBalanced() {
-
-		/* IMPLEMENT THIS METHOD! */
-		
-		return false; // this line is here only so this code will compile if you don't modify it
-
+		return isBalanced(root);
 	}
 
 }
