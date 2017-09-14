@@ -171,25 +171,36 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		}
 	}
 	
-	protected int depth(Node n, E val) {
+	
+	/*
+	 *  Method #3.
+	 *  
+	 *   Given a value, this method should return the “height” of its Node, 
+	 *   which is the greatest number of nodes between that node and any descendant node that is a leaf, 
+	 *   including the leaf but not the node itself. 
+	 *   
+	 *   The height of a leaf node (i.e., one which has no children) is defined to be 0. 
+	 *   
+	 *   If the input value is null or does not exist in this BST, this method should return -1.
+	 */
+	protected int height(E val) {
+		if (val == null) return -1;
+		
+		Node n = findNode(val);
 		if (n == null) return -1;
 		
-		if (n.value.equals(val)) {
-			return 0;
-		} else if (n.value.compareTo(val) > 0) {
-			return 1 + depth(n.leftChild, val);
-		} else {
-			return 1 + depth(n.rightChild, val);
-		}
+		return height(n);
+
 	}
 	
-	// Method #3.
-	protected int height(E val) {
-
-		/* IMPLEMENT THIS METHOD! */
+	protected int height(Node n) {
+		if (n == null) return 0;
 		
-		return -2; // this line is here only so this code will compile if you don't modify it
-
+		if (n.leftChild == null && n.rightChild == null) { // leaf node
+			return 0;
+		}
+		
+		return 1 + (height(n.leftChild) > height(n.rightChild) ? height(n.leftChild) : height(n.rightChild));
 	}
 
 
