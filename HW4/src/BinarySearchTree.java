@@ -115,13 +115,27 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	 *********************************************/
 	
 	
-	// Method #1.
+	/*
+	 * Method #1.
+	 * Given a value that is stored in the BST, it returns the corresponding Node that holds it. 
+	 * If the value does not exist in this BST, this method should return null.
+	 */
 	public Node findNode(E val) {
-
-		/* IMPLEMENT THIS METHOD! */
+		if (val == null) return null;
 		
-		return null; // this line is here only so this code will compile if you don't modify it
-
+		return findNode(root, val); 
+	}
+	
+	protected Node findNode(Node n, E val) {		
+		if (n == null) return null;
+				
+		if (n.value.equals(val)) {
+			return n;
+		} else if (n.value.compareTo(val) > 0) {
+			return findNode(n.leftChild, val);
+		} else {
+			return findNode(n.rightChild, val);
+		}
 	}
 	
 	// Method #2.
