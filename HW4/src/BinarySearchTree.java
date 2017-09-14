@@ -117,6 +117,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	
 	/*
 	 * Method #1.
+	 * 
 	 * Given a value that is stored in the BST, it returns the corresponding Node that holds it. 
 	 * If the value does not exist in this BST, this method should return null.
 	 */
@@ -140,6 +141,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	
 	/*
 	 *  Method #2.
+	 *  
 	 *  Given a value, this method should return the “depth” of its Node, 
 	 *  which is the number of ancestors between that node and the root, including the root but not the node itself. 
 	 *  
@@ -194,7 +196,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	}
 	
 	protected int height(Node n) {
-		if (n == null) return 0;
+		if (n == null) return -1; // huge mistake when return 0, took 2 hours to debug
 		
 		if (n.leftChild == null && n.rightChild == null) { // leaf node
 			return 0;
@@ -205,6 +207,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
 	/*
 	 * Method #4.
+	 * 
 	 * Given a Node, return true if the absolute value of the difference in heights of 
 	 * its left and right children is 0 or 1, and return false otherwise. 
 	 * 
@@ -216,9 +219,37 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		return Math.abs(height(n.leftChild) - height(n.rightChild)) < 2;
 	}
 	
-	// Method #5. .
+	
+	/*
+	 * Method #5.
+	 * 
+	 * returns true if isBalanced(Node) returns true for all Nodes in the tree. 
+	 * 
+	 * This method then allows the user of the BST to determine whether the BST is balanced. 
+	 * Note that the root being balanced does not imply that the entire tree is balanced
+	 */
 	public boolean isBalanced() {
-		return isBalanced(root);
+		return isBalancedUpTo(root);
+	}
+	
+	/*
+	 * a tree with root n is balanced if:
+	 * 		n is balanced
+	 * 		&& left subtree of n is balanced
+	 * 		&& right subtree of n is balanced
+	 */
+	protected boolean isBalancedUpTo(Node n) {
+		if (n == null) return false;
+		
+		boolean result = isBalanced(n);
+		
+		if (n.leftChild != null) 
+			result = result && isBalancedUpTo(n.leftChild);
+		
+		if (n.rightChild != null) 
+			result = result && isBalancedUpTo(n.rightChild);
+		
+		return result;
 	}
 
 }
