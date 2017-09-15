@@ -44,8 +44,7 @@ public class MovieRatingsParser {
 					map.get(title).add(rating.getUserRating());
 				}
 			}
-		}
-		
+		}		
 		
 		return map; 
 	}
