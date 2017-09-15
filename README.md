@@ -9,3 +9,5 @@ Write a program that will analyze the sentiment (positive or negative) of a sent
 Use and modify a binary search tree (BST) implementation in order to determine whether a tree is balanced.
 * [Homework 5 - TreeMaps and PriorityQueues](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/daa142fa0a6b48d2932559590bce3efa/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40daa142fa0a6b48d2932559590bce3efa)  
 In this assignment you will implement methods that process movie ratings, using the java.util.TreeMap and java.util.PriorityQueue classes from the Java Collections API.
+* [Homework 6 - Graphs](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/f0fa49ad9e284346ad3b863250a8526b/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40f0fa49ad9e284346ad3b863250a8526b)  
+In this assignment, you will implement methods used for exploring graphs.
