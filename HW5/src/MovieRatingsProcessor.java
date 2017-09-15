@@ -16,19 +16,37 @@ public class MovieRatingsProcessor {
 	 * return a List of movie titles in alphabetical order
 	 */
 	public static List<String> getAlphabeticalMovies(TreeMap<String, PriorityQueue<Integer>> movieRatings) {
-		if (movieRatings == null) {
+		if (movieRatings == null || movieRatings.isEmpty()) {
 			return new ArrayList<String>();
 		}
+		
 		List<String> keys = new ArrayList<>(movieRatings.keySet());
 		
 		return keys; 
 	}
-
+	
+	/*
+	 *  given an input int rating, 
+	 *  return a List of movie titles in alphabetical order, 
+	 *  where all movies in the List do not have any ratings less than or equal to rating 
+	 *  
+	 *  hint: the PriorityQueue is a min-heap, 
+	 *  meaning that the smallest rating is at the front of the queue!
+	 */
 	public static List<String> getAlphabeticalMoviesAboveRating(TreeMap<String, PriorityQueue<Integer>> movieRatings, int rating) {
+		if (movieRatings == null || movieRatings.isEmpty()) {
+			return new ArrayList<String>();
+		}
 		
-		/* IMPLEMENT THIS METHOD! */
+		List<String> movies = new ArrayList<>();
 		
-		return null; // this line is here only so this code will compile if you don't modify it
+		for (String title : movieRatings.keySet()) {
+			if (movieRatings.get(title).peek() > rating) {
+				movies.add(title);
+			}
+		}
+		
+		return movies;
 	}
 	
 	public static TreeMap<String, Integer> removeAllRatingsBelow(TreeMap<String, PriorityQueue<Integer>> movieRatings, int rating) {
