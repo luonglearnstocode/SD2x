@@ -10,12 +10,23 @@ import java.util.Set;
  */
 
 public class GraphUtils {
-
+	/*
+	 * Given a Graph, this method returns the shortest distance (in terms of number of edges)
+	 * from the node labeled src to the node labeled dest. 
+	 * 
+	 * The method should return -1 for any invalid inputs, including: 
+	 * 		null values for the Graph, src, or dest; 
+	 * 		there is no node labeled src or dest in the graph; 
+	 * 		there is no path from src to dest. 
+	 * 
+	 */
 	public static int minDistance(Graph graph, String src, String dest) {
+		if (graph == null || src == null || dest == null ||
+				!graph.containsElement(src) || !graph.containsElement(dest)) {
+			return -1;
+		}
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return -2; // this line is here only so this code will compile if you don't modify it
+		return new BreadthFirstSearch(graph).bfsDistance(graph.getNode(src), dest);
 	}
 	
 
