@@ -1,6 +1,11 @@
 
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 /*
@@ -29,15 +34,80 @@ public class GraphUtils {
 		return new BreadthFirstSearch(graph).bfsDistance(graph.getNode(src), dest);
 	}
 	
-
+	/*
+	 * Given a Graph, this method returns a Set of the values of all nodes within the specified distance
+	 * (in terms of number of edges) of the node labeled src, i.e. for which the minimum number of edges 
+	 * from src to that node is less than or equal to the specified distance. 
+	 *  
+	 * The value of the node itself should not be in the Set, even if there is an edge from the node to itself. 
+	 *  
+	 * The method should return null for any invalid inputs, including: 
+	 *  	null values for the Graph or src; 
+	 *  	there is no node labeled src in the graph; 
+	 *  	distance less than 1. 
+	 *  
+	 * However, if distance is greater than or equal to 1 
+	 * and there are no nodes within that distance (meaning: src is the only node in the graph), 
+	 * the method should return an empty Set.
+	 */
 	public static Set<String> nodesWithinDistance(Graph graph, String src, int distance) {
-
-		/* IMPLEMENT THIS METHOD! */
+		if (graph == null || src == null ||
+				!graph.containsElement(src) || 
+				distance < 1) {
+			return null;
+		}
 		
-		return null; // this line is here only so this code will compile if you don't modify it
+		Set<String> result = new HashSet<String>();
+		
+		if (graph.getNumNodes() == 1) {
+			return result;
+		}
+		
+		/*
+		 * traverse using BFS 
+		 * instead of searching for an element, 
+		 * we check if the distance is still within distance
+		 */
+		
+		Map<Node, Integer> distances = new HashMap<>();				
+		Queue<Node> toExplore = new LinkedList<>();
+		Set<Node> marked = new HashSet<>();
+		
+		marked.add(graph.getNode(src));		
+		toExplore.add(graph.getNode(src));
+		distances.put(graph.getNode(src), 0);
+
+		while (!toExplore.isEmpty()) {
+			Node current = toExplore.remove();
+			for (Node neighbor : graph.getNodeNeighbors(current)) {
+				if (!marked.contains(neighbor)) {
+					distances.put(neighbor, distances.get(current) + 1);
+					if (distances.get(neighbor) <= distance) { // check distance from 'src'
+						result.add(neighbor.getElement());
+					}
+					marked.add(neighbor);
+					toExplore.add(neighbor);
+				}
+			}
+		}
+				
+		return result;
 	}
 
-
+	/*
+	 * Given a Graph, this method indicates whether the List of node values represents a Hamiltonian Path. 
+	 * A Hamiltonian Path is a valid path through the graph in which every node in the graph is visited exactly once, 
+	 * except for the start and end nodes, which are the same, so that it is a cycle. 
+	 * 
+	 * If the values in the input List represent a Hamiltonian Path, the method should return true, 
+	 * but the method should return false otherwise, e.g. if the path is not a cycle, 
+	 * 		if some nodes are not visited, 
+	 * 		if some nodes are visited more than once, 
+	 * 		if some values do not have corresponding nodes in the graph, 
+	 * 		if the input is not a valid path (i.e., there is a sequence of nodes in the List that are not connected by an edge), etc. 
+	 * 
+	 * The method should also return false if the input Graph or List is null.
+	 */
 	public static boolean isHamiltonianPath(Graph g, List<String> values) {
 
 		/* IMPLEMENT THIS METHOD! */
