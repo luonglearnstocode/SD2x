@@ -109,10 +109,33 @@ public class GraphUtils {
 	 * The method should also return false if the input Graph or List is null.
 	 */
 	public static boolean isHamiltonianPath(Graph g, List<String> values) {
-
-		/* IMPLEMENT THIS METHOD! */
+		if (g == null || values == null || values.isEmpty()) {
+			return false;
+		}
 		
-		return true; // this line is here only so this code will compile if you don't modify it
+		String src = values.get(0);
+		Set<String> marked = new HashSet<>();
+		marked.add(src);
+		
+		if (!src.equals(values.get(values.size() - 1))) // not a cycle - start and end should be the same
+			return false;
+		
+		for (int i = 1; i < values.size(); i++) {
+			if (!g.containsElement(values.get(i)))  // not a node
+				return false;
+			
+			if (marked.contains(values.get(i)) // already visited
+					&& i != (values.size() - 1))  // except for the last node
+				return false;
+			
+			if (!g.getNodeNeighbors(g.getNode(values.get(i-1))).contains(g.getNode(values.get(i)))) { // not connected
+				return false;
+			}
+			marked.add(values.get(i));
+		}
+				
+		
+		return marked.size() == g.getNumNodes(); 
 	}
 	
 }
