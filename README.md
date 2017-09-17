@@ -11,3 +11,6 @@ Use and modify a binary search tree (BST) implementation in order to determine w
 In this assignment you will implement methods that process movie ratings, using the java.util.TreeMap and java.util.PriorityQueue classes from the Java Collections API.
 * [Homework 6 - Graphs](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/f0fa49ad9e284346ad3b863250a8526b/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40f0fa49ad9e284346ad3b863250a8526b)  
 In this assignment, you will implement methods used for exploring graphs.
+* [Homework 7 - UML](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/e387eff4315f4dce9dd0cd986e6ef82d/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40e387eff4315f4dce9dd0cd986e6ef82d)  
+In this assignment you will implement a design that is specified using a UML class diagram.
+
