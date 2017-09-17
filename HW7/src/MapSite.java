@@ -1,4 +1,4 @@
 
-public class MapSite {
-
+public abstract class MapSite {
+	public void enter() {}
 }
