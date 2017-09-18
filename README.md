@@ -13,4 +13,5 @@ In this assignment you will implement methods that process movie ratings, using 
 In this assignment, you will implement methods used for exploring graphs.
 * [Homework 7 - UML](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/e387eff4315f4dce9dd0cd986e6ef82d/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40e387eff4315f4dce9dd0cd986e6ef82d)  
 In this assignment you will implement a design that is specified using a UML class diagram.
-
+* [Homework 8 - Software Design](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/dfe067073833470cb93dff6b3efad0a0/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40dfe067073833470cb93dff6b3efad0a0)  
+In this assignment, you are asked to implement a program that allows a user to search through a collection of books and find books written by a specific author or the number of books written in a specified year. You will implement this program using the three-tier architecture discussed in recent lessons.
