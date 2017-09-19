@@ -18,6 +18,10 @@ public class DataTier {
 		fileName = inputSource;
 	}
 	
+	/*
+	 * read the data file containing information about the books, 
+	 * create Book objects for each, and then return the Book objects. 
+	 */
 	public List<Book> getAllBooks() {
 		List<Book> books = new ArrayList<>();
 		List<String> lines = null;
