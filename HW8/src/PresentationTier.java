@@ -14,7 +14,7 @@ public class PresentationTier {
 	}
 	
 	public void start() {
-		
+		System.out.println("test");
 		/* IMPLEMENT THIS METHOD */
 	}
 	
