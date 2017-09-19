@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /*
  * SD2x Homework #8
@@ -19,10 +20,17 @@ public class LogicTier {
 	 * for a given name, search through all of the books and 
 	 * return the titles of those books whose author name includes the input name
 	 */
-	public List<String> findBookTitlesByAuthor(String author) {
-		List<String> books = new ArrayList<>();
+	public Set<String> findBookTitlesByAuthor(String author) {
+		Set<String> titles = new HashSet<>();
+		List<Book> books = dataTier.getAllBooks();
 		
-		return books;
+		for (Book book : books) {
+			if (book.getAuthor().toLowerCase().contains(author.toLowerCase())) {
+				titles.add(book.getTitle());
+			}
+		}
+		
+		return titles;
 	}
 	
 	/*

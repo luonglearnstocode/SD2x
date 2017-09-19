@@ -1,5 +1,5 @@
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 /*
  * SD2x Homework #8
@@ -49,7 +49,7 @@ public class PresentationTier {
 	public void showBookTitlesByAuthor() {
 		System.out.print("Which author: ");
 		String author = scanner.nextLine();
-		List<String> books = logicTier.findBookTitlesByAuthor(author);
+		Set<String> books = logicTier.findBookTitlesByAuthor(author);
 		System.out.println("Books of " + author + ":");
 		for (String book : books) {
 			System.out.println(book);

@@ -26,6 +26,9 @@ public class DataTier {
 		List<Book> books = new ArrayList<>();
 		List<String> lines = null;
 		
+		/*
+		 * http://www.vogella.com/tutorials/JavaIO/article.html
+		 */
 		try {
 			lines = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {
