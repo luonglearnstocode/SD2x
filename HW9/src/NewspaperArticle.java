@@ -13,9 +13,7 @@ public class NewspaperArticle {
 	private Set<String> editors;
 	private String newspaper;
 	private Date date;
-	private String city;
-	private String state;
-	private String postCode;
+	private PublishingLocation location;
 	
 	public NewspaperArticle(String title, String author, int startPage, int endPage, Set<String> editors, String newspaper, Date date, String city, String state, String postCode) {
 		this.title = title;
@@ -25,9 +23,7 @@ public class NewspaperArticle {
 		this.editors = editors;
 		this.newspaper = newspaper;
 		this.date = date;
-		this.city = city;
-		this.state = state;
-		this.postCode  = postCode;
+		this.location = new PublishingLocation(city, state, postCode);
 	}
 	
 	public String getTitle() {
@@ -59,15 +55,15 @@ public class NewspaperArticle {
 	}
 	
 	public String getCity() {
-		return city;
+		return location.getCity();
 	}
 	
 	public String getState() {
-		return state;
+		return location.getState();
 	}
 	
 	public String getPostCode() {
-		return postCode;
+		return location.getPostCode();
 	}
 	
 	public int numPages(){

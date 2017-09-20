@@ -8,12 +8,12 @@ Write a program that will analyze the sentiment (positive or negative) of a sent
 * [Homework 4 - Binary Search Trees](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/b9d9c8350ac042e1940a37d6d31b08e7/?child=first)    
 Use and modify a binary search tree (BST) implementation in order to determine whether a tree is balanced.
 * [Homework 5 - TreeMaps and PriorityQueues](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/daa142fa0a6b48d2932559590bce3efa/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40daa142fa0a6b48d2932559590bce3efa)  
-In this assignment you will implement methods that process movie ratings, using the java.util.TreeMap and java.util.PriorityQueue classes from the Java Collections API.
+Implement methods that process movie ratings, using the java.util.TreeMap and java.util.PriorityQueue classes from the Java Collections API.
 * [Homework 6 - Graphs](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/969de2fc74c340b7917fabf78d940f65/f0fa49ad9e284346ad3b863250a8526b/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40f0fa49ad9e284346ad3b863250a8526b)  
-In this assignment, you will implement methods used for exploring graphs.
+Implement methods used for exploring graphs.
 * [Homework 7 - UML](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/e387eff4315f4dce9dd0cd986e6ef82d/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40e387eff4315f4dce9dd0cd986e6ef82d)  
-In this assignment you will implement a design that is specified using a UML class diagram.
+Implement a design that is specified using a UML class diagram.
 * [Homework 8 - Software Design](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/dfe067073833470cb93dff6b3efad0a0/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40dfe067073833470cb93dff6b3efad0a0)  
-In this assignment, you are asked to implement a program that allows a user to search through a collection of books and find books written by a specific author or the number of books written in a specified year. You will implement this program using the three-tier architecture discussed in recent lessons.
+Implement a program using the three-tier architecture that allows a user to search through a collection of books and find books written by a specific author or the number of books written in a specified year.
 * [Homework 9 - Refactoring](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/2762c877e0824a62b88cc161cffe401b/1a5677a66e2d44b098c55a4b1723262c/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%401a5677a66e2d44b098c55a4b1723262c)  
-In this assignment, you will refactor a piece of code in order to reduce its size and make it more generalizable.
+Refactor a piece of code in order to reduce its size and make it more generalizable.
