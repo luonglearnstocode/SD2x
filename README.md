@@ -1,4 +1,5 @@
 # [PennX: SD2x Data Structures and Software Design](https://www.edx.org/course/data-structures-software-design-pennx-sd2x)
+![Course progress](/SD2xProgress.png?raw=true "SD2x Course progress")
 * [Homework 1 - Linked Lists](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/44fa2fc239fa479baabfb7cbac8bcfb6/d16178c5ecce4daab963b6f46389992a/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40d16178c5ecce4daab963b6f46389992a)  
 Implement three methods that perform functions on a linked list, using the java.util.LinkedList class from the Java Collections API.
 * [Homework 2 - Queues and Stacks](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/44fa2fc239fa479baabfb7cbac8bcfb6/c246839fafee4770975035fd1c2bed51/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40c246839fafee4770975035fd1c2bed51)  
@@ -16,5 +17,6 @@ Implement a design that is specified using a UML class diagram.
 * [Homework 8 - Software Design](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/bd1ca9ec42034882bee3dbf3bb80c912/dfe067073833470cb93dff6b3efad0a0/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%40dfe067073833470cb93dff6b3efad0a0)  
 Implement a program using the three-tier architecture that allows a user to search through a collection of books and find books written by a specific author or the number of books written in a specified year.
 * [Homework 9 - Refactoring](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/2762c877e0824a62b88cc161cffe401b/1a5677a66e2d44b098c55a4b1723262c/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%401a5677a66e2d44b098c55a4b1723262c)  
-Refactor a piece of code in order to reduce its size and make it more generalizable.  
-![Course progress](/SD2xProgress.png?raw=true "SD2x Course progress")
+Refactor a piece of code in order to reduce its size and make it more generalizable.
+* [Homework 10 - Reliability](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/2762c877e0824a62b88cc161cffe401b/36272b673f7344789c48933017e18d71/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%4036272b673f7344789c48933017e18d71)  
+Modify code that relates to a simple social networking concept: suggesting friends to a student based on who is taking the same classes.
