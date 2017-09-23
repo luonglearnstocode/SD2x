@@ -2,14 +2,19 @@
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /*
  * SD2x Homework #11
@@ -35,39 +40,24 @@ public class PlagiarismDetector {
 			String file1 = files[i];
 
 			for (int j = i + 1; j < files.length; j++) { 
-				String file2 = files[j];
+				String file2 = files[j];				 
 				
-//				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
-//				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
-				
-				List<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
-				List<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
+				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
+				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
 				
 				if (file1Phrases == null || file2Phrases == null)
 					return null;
 				
-//				Set<String> matches = findMatches(file1Phrases, file2Phrases);
-				
-//				if (matches == null)
-//					return null;
 				int matches = findMatches(file1Phrases, file2Phrases);
 				if (matches > threshold) {
 					String key = file1 + "-" + file2;
-					if (!numberOfMatches.containsKey(file2 + "-" + file1)) { //&& file1.equals(file2) == false
-						numberOfMatches.put(key,matches);
-					}
+					numberOfMatches.put(key,matches);
 				}	
-								
-//				if (matches.size() > threshold) {
-//					String key = file1 + "-" + file2;
-//					if (numberOfMatches.containsKey(file2 + "-" + file1) == false && file1.equals(file2) == false) {
-//						numberOfMatches.put(key,matches.size());
-//					}
-//				}				
+												
 			}
 			
 		}		
-		
+
 		return sortResults(numberOfMatches);
 	}
 
@@ -100,32 +90,10 @@ public class PlagiarismDetector {
 
 	
 	/*
-	 * This method reads a file and converts it into a Set/List of distinct phrases,
+	 * This method reads a file and converts it into a List of distinct phrases,
 	 * each of size "window". The Strings in each phrase are whitespace-separated.
 	 */
-//	protected static Set<String> createPhrases(String filename, int window) {
-//		if (filename == null || window < 1) return null;
-//				
-//		List<String> words = readFile(filename);
-//		
-//		Set<String> phrases = new HashSet<String>();
-//		
-//		for (int i = 0; i < words.size() - window + 1; i++) {
-//			String phrase = "";
-//			for (int j = 0; j < window; j++) {
-//				// if LinkedList, O(n) for words.get()
-//				// with ArrayList, O(1)
-//				phrase += words.get(i+j) + " "; 
-//			}
-//
-//			phrases.add(phrase);
-//
-//		}
-//		
-//		return phrases;		
-//	}
-	
-	protected static List<String> createPhrases(String filename, int window) {
+	protected static Set<String> createPhrases(String filename, int window) {
 		if (filename == null || window < 1) return null;
 				
 		List<String> words = readFile(filename);
@@ -143,48 +111,28 @@ public class PlagiarismDetector {
 			phrases.add(phrase);
 
 		}
-		// convert phrases to List
-		// because findMatches iterates through HashSet is not O(1)
-		return new ArrayList<>(phrases);		
+
+		return phrases;		
 	}
 	
 
 	
 	/*
-	 * Returns a Set of Strings that occur in both of the Set parameters.
-	 * However, the comparison is case-insensitive.
-	 */
-//	protected static Set<String> findMatches(Set<String> myPhrases, Set<String> yourPhrases) {
-//	
-//		Set<String> matches = new HashSet<String>();
-//		
-//		if (myPhrases != null && yourPhrases != null) {
-//		
-//			for (String mine : myPhrases) {
-//				for (String yours : yourPhrases) {
-//					if (mine.equalsIgnoreCase(yours)) {
-//						matches.add(mine);
-//					}
-//				}
-//			}
-//		}
-//		return matches;
-//	}
-	
-	protected static int findMatches(List<String> myPhrases, List<String> yourPhrases) {
+	 * Returns the number of Strings that occur in both of the List parameters.
+	 */	
+	protected static int findMatches(Set<String> myPhrases, Set<String> yourPhrases) {
 		int count = 0;
+		// convert phrases to List
+		// because iterates through HashSet is not O(1)
+		List<String> myPhrasesList = new ArrayList<>(myPhrases);
+//		List<String> yourPhrasesList = new ArrayList<>(yourPhrases);
 		
-		if (myPhrases != null && yourPhrases != null) {
+		if (myPhrasesList != null && yourPhrases != null) {
 		
-			for (String mine : myPhrases) {
+			for (String mine : myPhrasesList) {
 				if (yourPhrases.contains(mine)) {
 					count++;
 				}
-//				for (String yours : yourPhrases) {
-//					if (mine.equalsIgnoreCase(yours)) {
-//						count++;
-//					}
-//				}
 			}
 		}
 		return count;
@@ -198,30 +146,54 @@ public class PlagiarismDetector {
 		
 		// Because this approach modifies the Map as a side effect of printing 
 		// the results, it is necessary to make a copy of the original Map
-		Map<String, Integer> copy = new HashMap<String, Integer>();
-
-		for (String key : possibleMatches.keySet()) {
-			copy.put(key, possibleMatches.get(key));
-		}	
+//		Map<String, Integer> copy = new HashMap<String, Integer>();
+//
+//		for (String key : possibleMatches.keySet()) {
+//			copy.put(key, possibleMatches.get(key));
+//		}	
+//		
+//		LinkedHashMap<String, Integer> list = new LinkedHashMap<String, Integer>();
+//
+//		for (int i = 0; i < copy.size(); i++) {
+//			int maxValue = 0;
+//			String maxKey = null;
+//			for (String key : copy.keySet()) {
+//				if (copy.get(key) > maxValue) {
+//					maxValue = copy.get(key);
+//					maxKey = key;
+//				}
+//			}
+//			
+//			list.put(maxKey, maxValue);
+//			
+//			copy.put(maxKey, -1);
+//		}
+//
+//		return list;
 		
-		LinkedHashMap<String, Integer> list = new LinkedHashMap<String, Integer>();
+		 List<Map.Entry<String, Integer>> list = new LinkedList<>(possibleMatches.entrySet());
+		    Collections.sort( list, new Comparator<Map.Entry<String, Integer>>() {
+		        @Override
+		        public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		            return (o2.getValue()).compareTo(o1.getValue());
+		        }
+		    });
 
-		for (int i = 0; i < copy.size(); i++) {
-			int maxValue = 0;
-			String maxKey = null;
-			for (String key : copy.keySet()) {
-				if (copy.get(key) > maxValue) {
-					maxValue = copy.get(key);
-					maxKey = key;
-				}
-			}
-			
-			list.put(maxKey, maxValue);
-			
-			copy.put(maxKey, -1);
-		}
-
-		return list;
+		    LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+		    for (Map.Entry<String, Integer> entry : list) {
+		        result.put(entry.getKey(), entry.getValue());
+		    }
+		    return result;
+		
+//		return possibleMatches.entrySet()
+//	              .stream()
+//	              .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+//	              .collect(Collectors.toMap(
+//	                Map.Entry::getKey, 
+//	                Map.Entry::getValue, 
+//	                (e1, e2) -> e1, 
+//	                LinkedHashMap::new
+//	              ));
 	}
 	
 	/*
