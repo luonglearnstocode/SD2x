@@ -53,7 +53,7 @@ public class PlagiarismDetector {
 				int matches = findMatches(file1Phrases, file2Phrases);
 				if (matches > threshold) {
 					String key = file1 + "-" + file2;
-					if (numberOfMatches.containsKey(file2 + "-" + file1) == false && file1.equals(file2) == false) {
+					if (!numberOfMatches.containsKey(file2 + "-" + file1)) { //&& file1.equals(file2) == false
 						numberOfMatches.put(key,matches);
 					}
 				}	
@@ -143,7 +143,8 @@ public class PlagiarismDetector {
 			phrases.add(phrase);
 
 		}
-		
+		// convert phrases to List
+		// because findMatches iterates through HashSet is not O(1)
 		return new ArrayList<>(phrases);		
 	}
 	
@@ -176,11 +177,14 @@ public class PlagiarismDetector {
 		if (myPhrases != null && yourPhrases != null) {
 		
 			for (String mine : myPhrases) {
-				for (String yours : yourPhrases) {
-					if (mine.equalsIgnoreCase(yours)) {
-						count++;
-					}
+				if (yourPhrases.contains(mine)) {
+					count++;
 				}
+//				for (String yours : yourPhrases) {
+//					if (mine.equalsIgnoreCase(yours)) {
+//						count++;
+//					}
+//				}
 			}
 		}
 		return count;
