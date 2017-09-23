@@ -1,6 +1,7 @@
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -25,7 +26,12 @@ public class PlagiarismDetector {
 		
 		Map<String, Integer> numberOfMatches = new HashMap<String, Integer>();
 		
-		for (int i = 0; i < files.length - 1; i++) {
+		/*
+		 * from looping n^2
+		 * to (n-1) + (n-2) + ... 1 ~ n^2 / 2
+		 * reduce runtime by half
+		 */
+		for (int i = 0; i < files.length - 1; i++) { 
 			String file1 = files[i];
 
 			for (int j = i + 1; j < files.length; j++) { 
@@ -63,7 +69,10 @@ public class PlagiarismDetector {
 	protected static List<String> readFile(String filename) {
 		if (filename == null) return null;
 		
-		List<String> words = new LinkedList<String>();
+		
+//		 change from LinkedList to ArrayList 
+//		 because createPhrases will access words by index
+		List<String> words = new ArrayList<String>(); 
 		
 		try {
 			Scanner in = new Scanner(new File(filename));
@@ -94,7 +103,9 @@ public class PlagiarismDetector {
 		for (int i = 0; i < words.size() - window + 1; i++) {
 			String phrase = "";
 			for (int j = 0; j < window; j++) {
-				phrase += words.get(i+j) + " ";
+				// if LinkedList, O(n) for words.get()
+				// with ArrayList, O(1)
+				phrase += words.get(i+j) + " "; 
 			}
 
 			phrases.add(phrase);
