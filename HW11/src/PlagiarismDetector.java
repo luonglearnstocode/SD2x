@@ -37,23 +37,33 @@ public class PlagiarismDetector {
 			for (int j = i + 1; j < files.length; j++) { 
 				String file2 = files[j];
 				
-				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
-				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
+//				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
+//				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
+				
+				List<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
+				List<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
 				
 				if (file1Phrases == null || file2Phrases == null)
 					return null;
 				
-				Set<String> matches = findMatches(file1Phrases, file2Phrases);
+//				Set<String> matches = findMatches(file1Phrases, file2Phrases);
 				
-				if (matches == null)
-					return null;
-								
-				if (matches.size() > threshold) {
+//				if (matches == null)
+//					return null;
+				int matches = findMatches(file1Phrases, file2Phrases);
+				if (matches > threshold) {
 					String key = file1 + "-" + file2;
 					if (numberOfMatches.containsKey(file2 + "-" + file1) == false && file1.equals(file2) == false) {
-						numberOfMatches.put(key,matches.size());
+						numberOfMatches.put(key,matches);
 					}
-				}				
+				}	
+								
+//				if (matches.size() > threshold) {
+//					String key = file1 + "-" + file2;
+//					if (numberOfMatches.containsKey(file2 + "-" + file1) == false && file1.equals(file2) == false) {
+//						numberOfMatches.put(key,matches.size());
+//					}
+//				}				
 			}
 			
 		}		
@@ -93,7 +103,29 @@ public class PlagiarismDetector {
 	 * This method reads a file and converts it into a Set/List of distinct phrases,
 	 * each of size "window". The Strings in each phrase are whitespace-separated.
 	 */
-	protected static Set<String> createPhrases(String filename, int window) {
+//	protected static Set<String> createPhrases(String filename, int window) {
+//		if (filename == null || window < 1) return null;
+//				
+//		List<String> words = readFile(filename);
+//		
+//		Set<String> phrases = new HashSet<String>();
+//		
+//		for (int i = 0; i < words.size() - window + 1; i++) {
+//			String phrase = "";
+//			for (int j = 0; j < window; j++) {
+//				// if LinkedList, O(n) for words.get()
+//				// with ArrayList, O(1)
+//				phrase += words.get(i+j) + " "; 
+//			}
+//
+//			phrases.add(phrase);
+//
+//		}
+//		
+//		return phrases;		
+//	}
+	
+	protected static List<String> createPhrases(String filename, int window) {
 		if (filename == null || window < 1) return null;
 				
 		List<String> words = readFile(filename);
@@ -112,9 +144,8 @@ public class PlagiarismDetector {
 
 		}
 		
-		return phrases;		
+		return new ArrayList<>(phrases);		
 	}
-
 	
 
 	
@@ -122,21 +153,37 @@ public class PlagiarismDetector {
 	 * Returns a Set of Strings that occur in both of the Set parameters.
 	 * However, the comparison is case-insensitive.
 	 */
-	protected static Set<String> findMatches(Set<String> myPhrases, Set<String> yourPhrases) {
+//	protected static Set<String> findMatches(Set<String> myPhrases, Set<String> yourPhrases) {
+//	
+//		Set<String> matches = new HashSet<String>();
+//		
+//		if (myPhrases != null && yourPhrases != null) {
+//		
+//			for (String mine : myPhrases) {
+//				for (String yours : yourPhrases) {
+//					if (mine.equalsIgnoreCase(yours)) {
+//						matches.add(mine);
+//					}
+//				}
+//			}
+//		}
+//		return matches;
+//	}
 	
-		Set<String> matches = new HashSet<String>();
+	protected static int findMatches(List<String> myPhrases, List<String> yourPhrases) {
+		int count = 0;
 		
 		if (myPhrases != null && yourPhrases != null) {
 		
 			for (String mine : myPhrases) {
 				for (String yours : yourPhrases) {
 					if (mine.equalsIgnoreCase(yours)) {
-						matches.add(mine);
+						count++;
 					}
 				}
 			}
 		}
-		return matches;
+		return count;
 	}
 	
 	/*
