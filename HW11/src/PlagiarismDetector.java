@@ -38,14 +38,18 @@ public class PlagiarismDetector {
 		 */
 		for (int i = 0; i < files.length - 1; i++) { 
 			String file1 = files[i];
-
+			
+			Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
+			if (file1Phrases == null) {
+				return null;
+			}
+			
 			for (int j = i + 1; j < files.length; j++) { 
 				String file2 = files[j];				 
 				
-				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
-				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 
 				
-				if (file1Phrases == null || file2Phrases == null)
+				Set<String> file2Phrases = createPhrases(dirName + "/" + file2, windowSize); 				
+				if (file2Phrases == null)
 					return null;
 				
 				int matches = findMatches(file1Phrases, file2Phrases);
@@ -57,7 +61,7 @@ public class PlagiarismDetector {
 			}
 			
 		}		
-
+		
 		return sortResults(numberOfMatches);
 	}
 
@@ -122,7 +126,7 @@ public class PlagiarismDetector {
 	 */	
 	protected static int findMatches(Set<String> myPhrases, Set<String> yourPhrases) {
 		int count = 0;
-		// convert phrases to List
+		// convert myPhrases to List
 		// because iterates through HashSet is not O(1)
 		List<String> myPhrasesList = new ArrayList<>(myPhrases);
 //		List<String> yourPhrasesList = new ArrayList<>(yourPhrases);
@@ -130,7 +134,7 @@ public class PlagiarismDetector {
 		if (myPhrasesList != null && yourPhrases != null) {
 		
 			for (String mine : myPhrasesList) {
-				if (yourPhrases.contains(mine)) {
+				if (yourPhrases.contains(mine)) { // HashSet contains is O(1)
 					count++;
 				}
 			}
