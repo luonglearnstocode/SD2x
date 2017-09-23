@@ -25,10 +25,10 @@ public class PlagiarismDetector {
 		
 		Map<String, Integer> numberOfMatches = new HashMap<String, Integer>();
 		
-		for (int i = 0; i < files.length; i++) {
+		for (int i = 0; i < files.length - 1; i++) {
 			String file1 = files[i];
 
-			for (int j = 0; j < files.length; j++) { 
+			for (int j = i + 1; j < files.length; j++) { 
 				String file2 = files[j];
 				
 				Set<String> file1Phrases = createPhrases(dirName + "/" + file1, windowSize); 
@@ -53,7 +53,6 @@ public class PlagiarismDetector {
 		}		
 		
 		return sortResults(numberOfMatches);
-
 	}
 
 	

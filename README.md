@@ -21,4 +21,4 @@ Refactor a piece of code in order to reduce its size and make it more generaliza
 * [Homework 10 - Reliability](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/2762c877e0824a62b88cc161cffe401b/36272b673f7344789c48933017e18d71/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%4036272b673f7344789c48933017e18d71)  
 Modify code that relates to a simple social networking concept: suggesting friends to a student based on who is taking the same classes.
 * [Homework 11 - Efficiency](https://courses.edx.org/courses/course-v1:PennX+SD2x+2T2017/courseware/2762c877e0824a62b88cc161cffe401b/2f63ea6bd51e4f43b079cf6c6a97c8e6/?activate_block_id=block-v1%3APennX%2BSD2x%2B2T2017%2Btype%40sequential%2Bblock%402f63ea6bd51e4f43b079cf6c6a97c8e6)  
-In this assignment, you are asked to improve the execution time of a Java program that attempts to detect plagiarism in a corpus of documents. 
+Improve the execution time of a Java program that attempts to detect plagiarism in a corpus of documents. 
