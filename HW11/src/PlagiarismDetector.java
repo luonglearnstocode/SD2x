@@ -31,6 +31,7 @@ public class PlagiarismDetector {
 		
 		Map<String, Integer> numberOfMatches = new HashMap<String, Integer>();
 		
+		// get all the phrases 1 time, put in a Map to lookup
 		Map<String, Set<String>> filePhrases = new HashMap<>();
 		for (String file : files) {
 			if (file != null) {
@@ -68,7 +69,7 @@ public class PlagiarismDetector {
 			}
 			
 		}		
-//		return numberOfMatches;
+
 		return sortResults(numberOfMatches);
 	}
 
@@ -155,6 +156,9 @@ public class PlagiarismDetector {
 	 */
 	protected static LinkedHashMap<String, Integer> sortResults(Map<String, Integer> possibleMatches) {
 		
+		/*
+		 * default
+		 */
 		// Because this approach modifies the Map as a side effect of printing 
 		// the results, it is necessary to make a copy of the original Map
 //		Map<String, Integer> copy = new HashMap<String, Integer>();
@@ -196,6 +200,9 @@ public class PlagiarismDetector {
 		    }
 		    return result;
 		
+		    /*
+		     * Java 8
+		     */
 //		return possibleMatches.entrySet()
 //	              .stream()
 //	              .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
