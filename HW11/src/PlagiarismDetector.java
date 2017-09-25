@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,11 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 /*
  * SD2x Homework #11
@@ -137,7 +133,6 @@ public class PlagiarismDetector {
 		// convert myPhrases to List
 		// because iterates through HashSet is not O(1)
 		List<String> myPhrasesList = new ArrayList<>(myPhrases);
-//		List<String> yourPhrasesList = new ArrayList<>(yourPhrases);
 		
 		if (myPhrasesList != null && yourPhrases != null) {
 		
@@ -159,6 +154,7 @@ public class PlagiarismDetector {
 		/*
 		 * default
 		 */
+		
 		// Because this approach modifies the Map as a side effect of printing 
 		// the results, it is necessary to make a copy of the original Map
 //		Map<String, Integer> copy = new HashMap<String, Integer>();
@@ -186,6 +182,7 @@ public class PlagiarismDetector {
 //
 //		return list;
 		
+//		https://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values-java
 		 List<Map.Entry<String, Integer>> list = new LinkedList<>(possibleMatches.entrySet());
 		    Collections.sort( list, new Comparator<Map.Entry<String, Integer>>() {
 		        @Override
