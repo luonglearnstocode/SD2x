@@ -27,6 +27,7 @@ public class PlagiarismDetector {
 		
 		Map<String, Integer> numberOfMatches = new HashMap<String, Integer>();
 		
+		// aha moment
 		// get all the phrases 1 time, put in a Map to lookup
 		Map<String, Set<String>> filePhrases = new HashMap<>();
 		for (String file : files) {
